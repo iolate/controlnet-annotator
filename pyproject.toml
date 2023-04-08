@@ -1,0 +1,35 @@
+[build-system]
+requires = ['hatchling']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'controlnet-annotator'
+version = '0.1.0'
+authors = [
+	{ name='Seungho Kim', email='iolate@me.com' },
+]
+description = 'Annotator Modules (Preprocessor) for ControlNet'
+license = 'MIT'
+readme = 'README.md'
+homepage = 'https://github.com/iolate/controlnet-annotator'
+requires-python = '>=3.6'
+classifiers = [
+	'Programming Language :: Python :: 3',
+]
+dependencies = [
+	'opencv-python',
+	'numpy',
+	'torch>=1.3.1',
+	'einops',
+]
+
+# [tool.hatch.build]
+# ignore-vcs = true
+
+[tool.hatch.build.targets.sdist.force-include]
+'src/controlnet_annotator/methods/hed/network-bsds500.pth' = 'src/controlnet_annotator/methods/hed/network-bsds500.pth'
+'src/controlnet_annotator/methods/mlsd/mlsd_large_512_fp32.pth' = 'src/controlnet_annotator/methods/mlsd/mlsd_large_512_fp32.pth'
+
+[tool.hatch.build.targets.wheel.force-include]
+'src/controlnet_annotator/methods/hed/network-bsds500.pth' = 'controlnet_annotator/methods/hed/network-bsds500.pth'
+'src/controlnet_annotator/methods/mlsd/mlsd_large_512_fp32.pth' = 'controlnet_annotator/methods/mlsd/mlsd_large_512_fp32.pth'
